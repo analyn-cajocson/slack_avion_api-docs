@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Read Me</title>
+</head>
+<body>
+  <h1>Avion Slack API 👋</h1>
+  <h3>User Registration</h3>HTTP Method: POST URL: {{url}}/api/v1/auth/
+  <h5>Sample Request Body</h5>{ "email": "user1@example.com", "password": "12345678", "password_confirmation": "12345678" }
+  <h5>Parameters</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>email</td>
+        <td>User email</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>password</td>
+        <td>User password</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>password_confirmation</td>
+        <td>Re-type password</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Login</h3>HTTP Method: POST URL: {{url}}/api/v1/auth/sign_in
+  <h5>Sample Request Body</h5>{ "email": "meline@hotmail.com", "password": "12345678" }
+  <h5>Parameters</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>email</td>
+        <td>User email</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>password</td>
+        <td>User password</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Send Message</h3>HTTP Method: POST URL: {{url}}/api/v1/messages
+  <h5>Sample Request Body</h5>{ "receiver_id": 1, "receiver_class": "User", "body": "kamusta?" }
+  <h5>Parameters</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>receiver_id</td>
+        <td>ID of the message's receiver</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>receiver_class</td>
+        <td>Type of the receiver. User for direct message, Channel for sending a message in a channel</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>body</td>
+        <td>Message body</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5>Request Headers</h5>
+  <p>Get these values from the login response header</p>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>access-token</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>client</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>expiry</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>uid</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Retrieve Message</h3>HTTP Method: Get URL: {{url}}/api/v1/messages?receiver_id=1&amp;receiver_class=User
+  <h5>Parameters</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>receiver_id</td>
+        <td>ID of the message's receiver</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>receiver_class</td>
+        <td>Type of the receiver. User for direct message, Channel for sending a message in a channel</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5>Request Headers</h5>
+  <p>Get these values from the login response header</p>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>access-token</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>client</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>expiry</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>uid</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Create Channel with members</h3>HTTP Method: POST URL: {{url}}/api/v1/channels
+  <h5>Sample Request Body</h5>{ "name": "channel1", "user_ids": [2] }
+  <h5>Parameters</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>name</td>
+        <td>Channel Name</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>user_ids</td>
+        <td>List of user ids to be included on the channel. Array</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5>Request Headers</h5>
+  <p>Get these values from the login response header</p>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>access-token</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>client</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>expiry</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>uid</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Get all users channels</h3>HTTP Method: Get URL: {{url}}/api/v1/channels
+  <h5>Request Headers</h5>
+  <p>Get these values from the login response header</p>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>access-token</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>client</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>expiry</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>uid</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Get channel details via channel ID</h3>HTTP Method: Get URL: {{url}}/api/v1/channels/3
+  <h5>Parameters</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>id</td>
+        <td>ID of the channel</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5>Request Headers</h5>
+  <p>Get these values from the login response header</p>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>access-token</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>client</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>expiry</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>uid</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Add member to a channel</h3>HTTP Method: POST URL: {{url}}/api/v1/channel/add_member
+  <h5>Sample Request Body</h5>{ "id": 3, "member_id": 3 }
+  <h5>Parameters</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>id</td>
+        <td>Channel ID</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>member_id</td>
+        <td>User ID of the new member</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5>Request Headers</h5>
+  <p>Get these values from the login response header</p>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>access-token</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>client</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>expiry</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>uid</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>List of All Users</h3>HTTP Method: Get URL: {{url}}/api/v1/users
+  <h5>Request Headers</h5>
+  <p>Get these values from the login response header</p>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Required</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>access-token</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>client</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>expiry</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>uid</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
